@@ -93,11 +93,7 @@ function Write-DirectorySizeInfo {
 $Result = Write-DirectorySizeInfo -Path $RootPath -MinSize $MinSize
 if ($Result.Json) {
     $JsonOutput = ConvertTo-Json $Result.Json -Depth 100
-    if ($OutputPath) {
-        [System.IO.File]::WriteAllText($OutputPath, $JsonOutput)
-    } else {
-        Write-Host $JsonOutput
-    }
+    [System.IO.File]::WriteAllText($OutputPath, $JsonOutput)
 } else {
     Write-Host "No items meet the minimum size criteria."
 }
